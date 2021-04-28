@@ -32,23 +32,27 @@ namespace LambdaExpressionProblem
             personList.Add(new Person() { SSN = 6, Age = 58, Name = "Preethi", Address = "Chennai" });
             personList.Add(new Person() { SSN = 7, Age = 68, Name = "Hima", Address = "Hyderabad" });
             //IterateOverList(personList);
-            Retrieve(personList);
+            //Retrieve(personList);
+            SearchPerson(personList);
         }
-        //UC3
-        public static void Retrieve(List<Person> list)
+        public static void SearchPerson(List<Person> list)
         {
-            try
-            {
-                var result = list.Average(x => x.Age);
+           try
+           {
+                var person = list.Where(x => x.Name == "Shruthi").First();
+                if (person != null)
+                {
+                    Console.WriteLine("person present");
 
-                Console.WriteLine("Average age among all persons\t" + result);
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+                    Console.WriteLine("Age\t" + person.Age + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
+                }
+           }
+           catch (Exception ex)
+           {
+               Console.WriteLine("Person not in the List");
+           }
         }
     }
 }
+
 
