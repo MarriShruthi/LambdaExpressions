@@ -33,24 +33,24 @@ namespace LambdaExpressionProblem
             personList.Add(new Person() { SSN = 7, Age = 68, Name = "Hima", Address = "Hyderabad" });
             //IterateOverList(personList);
             //Retrieve(personList);
-            SearchPerson(personList);
+            //SearchPerson(personList);
+            SkipLessThan60(personList);
         }
-        public static void SearchPerson(List<Person> list)
+        public static void SkipLessThan60(List<Person> list)
         {
-           try
-           {
-                var person = list.Where(x => x.Name == "Shruthi").First();
-                if (person != null)
+            try
+            {
+                var result = list.FindAll(x => x.Age > 60);
+                foreach (Person person in result)
                 {
-                    Console.WriteLine("person present");
 
                     Console.WriteLine("Age\t" + person.Age + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
                 }
-           }
-           catch (Exception ex)
-           {
-               Console.WriteLine("Person not in the List");
-           }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
