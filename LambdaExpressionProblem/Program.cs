@@ -34,24 +34,23 @@ namespace LambdaExpressionProblem
             //IterateOverList(personList);
             //Retrieve(personList);
             //FindAvgAgeForAll(personList);
-            SearchPerson(personList);
-            //SkipLessThan60(personList);
+           // SearchPerson(personList);
+            SkipLessThan60(personList);
         }
-        public static void SearchPerson(List<Person> list)
+        public static void SkipLessThan60(List<Person> list)
         {
             try
             {
-                var person = list.Where(x => x.Name == "Shruthi").First();
-                if (person != null)
+                var result = list.FindAll(x => x.Age > 60);
+                foreach (Person person in result)
                 {
-                    Console.WriteLine("person present");
 
-                    Console.WriteLine("Age\t" + person.Age + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
+                    Console.WriteLine("Age\t" + person.Age+"\t" + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
                 }
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-                Console.WriteLine("person not exist in a list");
+                Console.WriteLine(ex.Message);
             }
         }
     }
