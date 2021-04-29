@@ -32,19 +32,19 @@ namespace LambdaExpressionProblem
             personList.Add(new Person() { SSN = 6, Age = 58, Name = "Preethi", Address = "Chennai" });
             personList.Add(new Person() { SSN = 7, Age = 68, Name = "Hima", Address = "Hyderabad" });
             //IterateOverList(personList);
-            //Retrieve(personList);
+            Retrieve(personList);
             //SearchPerson(personList);
-            SkipLessThan60(personList);
+            //SkipLessThan60(personList);
         }
-        public static void SkipLessThan60(List<Person> list)
+        public static void Retrieve(List<Person> list)
         {
             try
             {
-                var result = list.FindAll(x => x.Age > 60);
+                var result = list.FindAll(x => x.Age > 13 && x.Age < 18);
                 foreach (Person person in result)
                 {
+                    Console.WriteLine("Age\t" + person.Age+"\t" + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
 
-                    Console.WriteLine("Age\t" + person.Age + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
                 }
             }
             catch (Exception ex)
