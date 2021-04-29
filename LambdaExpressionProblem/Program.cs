@@ -33,22 +33,25 @@ namespace LambdaExpressionProblem
             personList.Add(new Person() { SSN = 7, Age = 68, Name = "Hima", Address = "Hyderabad" });
             //IterateOverList(personList);
             //Retrieve(personList);
-            FindAvgAgeForAll(personList);
-            //SearchPerson(personList);
+            //FindAvgAgeForAll(personList);
+            SearchPerson(personList);
             //SkipLessThan60(personList);
         }
-        public static void FindAvgAgeForAll(List<Person> list)
+        public static void SearchPerson(List<Person> list)
         {
             try
             {
-                var result = list.Average(x => x.Age);
+                var person = list.Where(x => x.Name == "Shruthi").First();
+                if (person != null)
+                {
+                    Console.WriteLine("person present");
 
-                Console.WriteLine("Average age among all persons\t" + result);
-
+                    Console.WriteLine("Age\t" + person.Age + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
+                }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("person not exist in a list");
             }
         }
     }
